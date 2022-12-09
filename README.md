@@ -20,83 +20,26 @@ Here there are an amazing description
 
 ## 🚀 How to install
 
-
+To install the depencies for all apps (web and admin) use the following script
 
 ```bash
-npm install expo-crop-image
+npm run install:all
 ```
 
-## ImageEditor
+To install the depencies for each app (web and admin) use the following script
 
-isRequired if there is a \* in the name field
+Web:
 
-| name                      | Proptypes | Description                                                       |
-| --------------------------- | ----------- | ------------------------------------------------------------------- |
-| **imageUri** \*           | string    | Image address that will be used for cropping                      |
-| **fixedAspectRatio** \*   | number    | Expect => aspect ratio.                                           |
-| **minimumCropDimensions** | (size)    | Expect => {width: number, height: number} [Default 100 X 100].    |
-| **onEditingCancel** \*    | func      | void                                                              |
-| **onEditingComplete** \*  | func      | Returns image object (image object fields => uri, width, height). |
-| **editorOptions**         | object    | Customize appearance of editor                                    |
-| **processingComponent**   | ReactNode | Customize appearance of loading between process                   |
-
-## Example
-
-```jsx
-import { ImageEditor } from "expo-crop-image";
-
-<ImageEditor
-  imageUri={uri}
-  fixedAspectRatio={2 / 3}
-  minimumCropDimensions={{
-    width: 50,
-    height: 50,
-  }}
-  onEditingCancel={() => {
-    console.log("onEditingCancel");
-  }}
-  onEditingComplete={(image) => {
-    console.log(image);
-  }}
-/>;
+```bash
+npm run install:web
 ```
 
-## Editor Options
+or
 
-```jsx
-import { ImageEditor } from "expo-crop-image";
+Admin:
 
-<ImageEditor
-  ...
-  editorOptions={{
-    ...
-  }}
-/>;
-
-type EditorOptions = {
-  backgroundColor?: string
-  controlBar?: {
-    position?: 'top' | 'bottom'
-    backgroundColor?: string
-    height?: number
-    cancelButton?: IconProps
-    cropButton?: IconProps
-    backButton?: IconProps
-    saveButton?: IconProps
-  }
-  coverMarker?: {
-    show?: boolean
-    color?: string
-  }
-  gridOverlayColor?: string
-  overlayCropColor?: string
-}
-
-type IconProps = {
-  color: string
-  text: string
-  iconName: FeatherIconNames | MaterialIconNames
-}
+```bash
+npm run install:admin
 ```
 
 ## 🧪 Technologies
@@ -141,4 +84,3 @@ npm run build:watch
 ## This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 Made with 💜 by [Bruno Alves](https://nito-dev.vercel.app/) 👋
-
