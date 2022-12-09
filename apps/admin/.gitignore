@@ -5,3 +5,4 @@ keystone.db
 ./postgres-data
 .env
 /.keystone/config.js
+.env.local

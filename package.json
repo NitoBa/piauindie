@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "docker:up": "docker compose up -d",
     "dev:web": "cd apps/web && npm run dev",
     "dev:admin": "cd apps/admin && npm run dev",
     "dev:all": "concurrently \"npm run dev:web\" \"npm run dev:admin\"",
