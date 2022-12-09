@@ -30,7 +30,7 @@
   },
   "lint-staged": {
     "apps/**/": "prettier --write --ignore-unknown",
-    "apps/**/src": "npm run lint:fix"
+    "apps/**": "npm run lint:fix"
   },
   "config": {
     "commitizen": {
