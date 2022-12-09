@@ -1,0 +1,6 @@
+apps/**/node_modules
+apps/**/.next
+apps/**/.keystone
+node_modules
+build
+dist
