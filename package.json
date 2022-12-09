@@ -12,7 +12,7 @@
     "install:all": "npm i && concurrently \"npm run install:web\" \"npm run install:admin\"",
     "prepare": "husky install",
     "commit": "git-cz",
-    "lint": "eslint apps/**/src --ext .tsx,.ts",
+    "lint": "cd apps/web && npm run lint:fix && cd .. && cd apps/admin && npm run lint:fix && cd ..",
     "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [],
@@ -29,8 +29,8 @@
     "prettier": "^2.8.1"
   },
   "lint-staged": {
-    "apps/**/": "prettier --write --ignore-unknown",
-    "apps/**": "npm run lint:fix"
+    "**/**": "prettier --write --ignore-unknown",
+    "apps": "npm run lint:fix"
   },
   "config": {
     "commitizen": {

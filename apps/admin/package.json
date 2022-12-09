@@ -7,7 +7,9 @@
     "start": "keystone start",
     "build": "keystone build",
     "prisma": "keystone prisma",
-    "postinstall": "keystone postinstall --fix"
+    "postinstall": "keystone postinstall --fix",
+    "lint": "eslint src --ext .tsx,.ts",
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "@keystone-6/auth": "^5.0.1",
