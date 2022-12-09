@@ -46,38 +46,16 @@ npm run install:admin
 
 This project was developed using the following technologies:
 
-- [ReactNative](https://reactjs.org/)
-- [Expo](https://tailwindcss.com/)
-- [Recoil](https://figma.com)
+- [NextJS](https://nextjs.org/)
+- [ChakraUI](https://chakra-ui.com/)
+- [KeystoneJS](https://keystonejs.com/)
+- [Prisma](https://www.prisma.io/)
+- [GraphQL](https://graphql.org/)
+- [GraphQLCodegen](https://the-guild.dev/graphql/codegen)
 - [Typescript](https://storybook.js.org/)
-
-## 📌 Requirements
-
-To use this package you have to install the following dependencies
-
-- [@expo/vector-icons](https://docs.expo.dev/guides/icons/)
-- [expo-image-manipulator](https://docs.expo.dev/versions/latest/sdk/imagemanipulator/)
-- [react-native-gesture-handler](https://docs.expo.dev/versions/latest/sdk/gesture-handler/)
-
-## 🚀 How to run locally
-
-Clone the project and access the folder.
-
-```bash
-git clone https://github.com/NitoBa/expo-crop-image.git
-
-cd expo-crop-image && npm install
-cd example-app && npm install && cd ..
-```
-
-Compile the package locally
-
-```bash
-# build the package locally
-npm run build:dev
-# watch to changes while running with app
-npm run build:watch
-```
+- [Docker](https://www.docker.com/)
+- [Postgres](https://www.postgresql.org/)
+- [Supabase](https://supabase.com/)
 
 ## 📝 License
 
