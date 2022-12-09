@@ -7,7 +7,7 @@
     "start": "keystone start",
     "build": "keystone build",
     "prisma": "keystone prisma",
-    "postinstall": "keystone postinstall"
+    "postinstall": "keystone postinstall --fix"
   },
   "dependencies": {
     "@keystone-6/auth": "^5.0.1",
