@@ -43,7 +43,7 @@ export function NavBar() {
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        borderColor={useColorModeValue('brand.200', 'gray.900')}
         align={'center'}
       >
         <Flex
@@ -89,7 +89,7 @@ export function NavBar() {
             <Button buttonType={'secondary'}>Sign Up</Button>
           </LinkNext>
           <LinkNext href={'/login?type=signIn'}>
-            <Button fontWeight={500}>Sign In</Button>
+            <Button>Sign In</Button>
           </LinkNext>
         </Stack>
       </Flex>
@@ -103,7 +103,7 @@ export function NavBar() {
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200')
-  const linkHoverColor = useColorModeValue('gray.800', 'white')
+  const linkHoverColor = useColorModeValue('brand.500', 'white')
   const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (

@@ -1,49 +1,61 @@
-import { Box, Text, Flex, useColorModeValue } from '@chakra-ui/react'
+import { Box, Text, Stack, ButtonGroup, IconButton } from '@chakra-ui/react'
 import Image from 'next/image'
 import LinkNext from 'next/link'
+import { FaGithub, FaInstagram, FaDiscord, FaYoutube } from 'react-icons/fa'
 
 export function Footer() {
   return (
     <Box
-      bg={useColorModeValue('brand.50', 'brand.900')}
-      color={useColorModeValue('brand.700', 'brand.200')}
+      as="footer"
+      py={{ base: '12', md: '16' }}
+      px="6"
+      borderTop="1px"
+      borderColor="brand.200"
+      bg="brand.50"
+      width="full"
     >
-      {/* <Container as={Stack} maxW={'6xl'} pt="10">
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
-          <Stack align={'flex-start'}>
-            <ListHeader>Product</ListHeader>
-            <Link href={'#'}>Overview</Link>
-          </Stack>
-        </SimpleGrid>
-      </Container> */}
-      <Box py={10}>
-        <Flex
-          align={'center'}
-          _before={{
-            content: '""',
-            borderBottom: '1px solid',
-            borderColor: useColorModeValue('brand.200', 'gray.700'),
-            flexGrow: 1,
-            mr: 8,
-          }}
-          _after={{
-            content: '""',
-            borderBottom: '1px solid',
-            borderColor: useColorModeValue('brand.200', 'gray.700'),
-            flexGrow: 1,
-            ml: 8,
-          }}
-        >
+      <Stack spacing={{ base: '4', md: '5' }}>
+        <Stack justify="space-between" direction="row" align="center">
           <LinkNext href="/">
-            <Box pos="relative" w="40px" h="40px">
+            <Box pos="relative" w="10" h="10">
               <Image src={'/logo.jpg'} alt="logo" fill />
             </Box>
           </LinkNext>
-        </Flex>
-        <Text pt={6} fontSize={'sm'} textAlign={'center'}>
-          © {new Date().getFullYear()} Piauindie. All rights reserved
+          <ButtonGroup variant="ghost">
+            <IconButton
+              as="a"
+              href="https://www.instagram.com/piauindie/"
+              aria-label="Instagram"
+              icon={<FaInstagram fontSize="1.25rem" />}
+              _hover={{ bg: 'brand.400', color: 'white' }}
+            />
+            <IconButton
+              as="a"
+              href="https://github.com/piauindie/piauindie"
+              aria-label="GitHub"
+              icon={<FaGithub fontSize="1.25rem" />}
+              _hover={{ bg: 'brand.400', color: 'white' }}
+            />
+            <IconButton
+              as="a"
+              href="https://discord.com/invite/TKUsrKs5Qb"
+              aria-label="Discord"
+              icon={<FaDiscord fontSize="1.25rem" />}
+              _hover={{ bg: 'brand.400', color: 'white' }}
+            />
+            <IconButton
+              as="a"
+              href="https://www.youtube.com/channel/UChSrwvFjBscD_b7LKnNcYMw"
+              aria-label="Youtube"
+              icon={<FaYoutube fontSize="1.25rem" />}
+              _hover={{ bg: 'brand.400', color: 'white' }}
+            />
+          </ButtonGroup>
+        </Stack>
+        <Text fontSize="sm" color="GrayText">
+          &copy; {new Date().getFullYear()} Piauindie. All rights reserved.
         </Text>
-      </Box>
+      </Stack>
     </Box>
   )
 }

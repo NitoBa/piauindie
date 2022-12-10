@@ -10,10 +10,9 @@ export default function Login() {
 
   return (
     <Flex
-      css={{ height: 'calc(100vh - 230px)' }}
       align={'center'}
       justify={'center'}
-      bg={useColorModeValue('brand.50', 'gray.800')}
+      bg={useColorModeValue('brand.100', 'gray.800')}
     >
       {type === 'signIn' && (
         <Fade in={type === 'signIn'} transition={{ enter: { duration: 0.5 } }}>

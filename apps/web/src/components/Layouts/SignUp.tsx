@@ -1,7 +1,16 @@
-import { Stack, Heading, useColorModeValue, Box, Text } from '@chakra-ui/react'
+import {
+  Stack,
+  Heading,
+  useColorModeValue,
+  Box,
+  Text,
+  HStack,
+  Divider,
+} from '@chakra-ui/react'
 import { Button } from '@components/Button'
 import { Input } from '@components/Input'
 import { Link } from '@components/Link'
+import { OAuthButtons } from '@components/OAuthButtons'
 
 export function SignUpLayout() {
   return (
@@ -38,6 +47,17 @@ export function SignUpLayout() {
               </Text>
             </Stack>
           </Stack>
+        </Stack>
+
+        <Stack spacing="6" mt={4}>
+          <HStack>
+            <Divider />
+            <Text fontSize="sm" whiteSpace="nowrap" color="muted">
+              or continue with
+            </Text>
+            <Divider />
+          </HStack>
+          <OAuthButtons />
         </Stack>
       </Box>
     </Stack>
