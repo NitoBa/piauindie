@@ -1,23 +1,57 @@
-import { Button as CkButton, ButtonProps } from '@chakra-ui/react'
+import {
+  Button as CkButton,
+  ComponentStyleConfig,
+  ButtonProps,
+} from '@chakra-ui/react'
 
-type Props = {
-  buttonType?: 'primary' | 'secondary'
-} & ButtonProps
+export const BaseButton: ComponentStyleConfig = {
+  baseStyle: {
+    cursor: 'pointer',
+    fontWeight: 'medium',
+    _focusVisible: {
+      boxShadow: 'none',
+      outlineColor: 'brand.700',
+    },
+    _hover: {
+      color: 'white',
+    },
+    _active: {
+      color: 'white',
+    },
+  },
 
-export function Button({ buttonType = 'primary', ...props }: Props) {
-  const isPrimary = buttonType === 'primary'
-  return (
-    <CkButton
-      cursor={'pointer'}
-      bg={isPrimary ? 'brand.500' : 'transparent'}
-      border="1px"
-      borderColor={isPrimary ? 'transparent' : 'brand.500'}
-      color={isPrimary ? 'white' : 'brand.500'}
-      size={{ base: 'sm', md: 'md' }}
-      _hover={{ bg: isPrimary ? 'brand.600' : 'brand.500', color: 'white' }}
-      _active={{ bg: isPrimary ? 'brand.700' : 'brand.500', color: 'white' }}
-      _focusVisible={{ boxShadow: 'none', outlineColor: 'brand.700' }}
-      {...props}
-    />
-  )
+  variants: {
+    primary: {
+      border: '1px',
+      bg: 'brand.500',
+      borderColor: 'transparent',
+      color: 'white',
+      _hover: {
+        bg: 'brand.600',
+      },
+      _active: {
+        bg: 'brand.700',
+      },
+    },
+    secondary: {
+      border: '1px',
+      bg: 'transparent',
+      borderColor: 'brand.500',
+      color: 'brand.500',
+      _hover: {
+        bg: 'brand.500',
+      },
+      _active: {
+        bg: 'brand.700',
+      },
+    },
+  },
+
+  defaultProps: {
+    variant: 'primary',
+  },
+}
+
+export function Button({ ...props }: ButtonProps) {
+  return <CkButton size={{ base: 'sm', md: 'md' }} {...props} />
 }

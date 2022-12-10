@@ -86,7 +86,7 @@ export function NavBar() {
           spacing={{ base: 3, md: 6 }}
         >
           <LinkNext href={'/login?type=signUp'}>
-            <Button buttonType={'secondary'}>Sign Up</Button>
+            <Button variant={'secondary'}>Sign Up</Button>
           </LinkNext>
           <LinkNext href={'/login?type=signIn'}>
             <Button>Sign In</Button>

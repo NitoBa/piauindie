@@ -44,7 +44,7 @@ export function OAuthButtons() {
   return (
     <ButtonGroup variant="outline" spacing="4" width="full">
       {providers.map(({ name, icon }) => (
-        <Button key={name} width="full" buttonType="secondary">
+        <Button key={name} width="full" variant="secondary">
           <VisuallyHidden>Sign in with {name}</VisuallyHidden>
           {icon}
         </Button>

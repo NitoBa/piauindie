@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint src --ext .tsx,.ts",
     "lint:fix": "npm run lint -- --fix",
+    "gen-tokens": "npx chakra-cli tokens  ./src/styles/theme.ts",
     "codegen": "DOTENV_CONFIG_PATH=.env npx graphql-codegen -r dotenv/config --config codegen.ts"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "react-icons": "^4.7.1"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "^2.2.0",
     "@graphql-codegen/cli": "^2.15.0",
     "@types/node": "18.11.11",
     "@types/react": "18.0.26",

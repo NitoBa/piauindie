@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react'
+import { BaseButton } from '@components/Button'
 
 export const theme = extendTheme({
+  components: {
+    Button: BaseButton,
+  },
   sizes: { 'h-screen': '100vh', 'w-screen': '100vw' },
   fonts: {
     body: `'Inter', sans-serif`,
