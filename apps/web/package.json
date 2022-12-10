@@ -9,6 +9,7 @@
     "lint": "eslint src --ext .tsx,.ts",
     "lint:fix": "npm run lint -- --fix",
     "gen-tokens": "npx chakra-cli tokens  ./src/styles/theme.ts",
+    "postinstall": "npm run gen-tokens",
     "codegen": "DOTENV_CONFIG_PATH=.env npx graphql-codegen -r dotenv/config --config codegen.ts"
   },
   "dependencies": {

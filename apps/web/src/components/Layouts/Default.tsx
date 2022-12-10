@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { Footer } from './Footer'
 import { NavBar } from './Navbar'
@@ -10,7 +11,7 @@ export function DefaultLayout({ children }: Props) {
   return (
     <>
       <NavBar />
-      {children}
+      <Box>{children}</Box>
       <Footer />
     </>
   )

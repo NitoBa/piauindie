@@ -34,9 +34,16 @@ export function NavBar() {
   const { isOpen, onToggle } = useDisclosure()
 
   return (
-    <Box>
+    <Box
+      pos="fixed"
+      top="0"
+      w="full"
+      zIndex={10}
+      as="header"
+      css={{ 'backdrop-filter': 'saturate(180%) blur(5px)' }}
+    >
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
+        bg={useColorModeValue('whiteAlpha.700', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
@@ -45,6 +52,7 @@ export function NavBar() {
         borderStyle={'solid'}
         borderColor={useColorModeValue('brand.200', 'gray.900')}
         align={'center'}
+        blur="xl"
       >
         <Flex
           flex={{ base: 1, md: 'auto' }}
@@ -112,19 +120,19 @@ const DesktopNav = () => {
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
+              <LinkNext href={navItem.href ?? '#'}>
+                <Text
+                  fontSize={'sm'}
+                  fontWeight={500}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: 'none',
+                    color: linkHoverColor,
+                  }}
+                >
+                  {navItem.label}
+                </Text>
+              </LinkNext>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -154,6 +162,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
   return (
     <Link
       href={href}
+      target="_blank"
       role={'group'}
       display={'block'}
       p={2}
@@ -194,6 +203,7 @@ const MobileNav = () => {
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
+      minH="100vh"
       display={{ md: 'none' }}
     >
       {NAV_ITEMS.map((navItem) => (
@@ -208,32 +218,32 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
-        py={2}
-        as={Link}
-        href={href ?? '#'}
-        justify={'space-between'}
-        align={'center'}
-        _hover={{
-          textDecoration: 'none',
-        }}
-      >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}
+      <LinkNext href={href ?? '#'}>
+        <Flex
+          py={2}
+          justify={'space-between'}
+          align={'center'}
+          _hover={{
+            textDecoration: 'none',
+          }}
         >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
-      </Flex>
+          <Text
+            fontWeight={600}
+            color={useColorModeValue('gray.600', 'gray.200')}
+          >
+            {label}
+          </Text>
+          {children && (
+            <Icon
+              as={ChevronDownIcon}
+              transition={'all .25s ease-in-out'}
+              transform={isOpen ? 'rotate(180deg)' : ''}
+              w={6}
+              h={6}
+            />
+          )}
+        </Flex>
+      </LinkNext>
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
@@ -246,7 +256,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         >
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <Link key={child.label} py={2} href={child.href} target="_blank">
                 {child.label}
               </Link>
             ))}
