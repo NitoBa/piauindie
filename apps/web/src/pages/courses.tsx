@@ -1,5 +1,6 @@
 import { Center, Flex, Grid, Heading } from '@chakra-ui/react'
 import CourseCard from '@components/Cards/CourseCard'
+import Link from 'next/link'
 
 export default function CoursesPage() {
   return (
@@ -23,12 +24,9 @@ export default function CoursesPage() {
         }}
         gap="4"
       >
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
-        <CourseCard />
+        <Link href={`/course/slug-course`} prefetch={false}>
+          <CourseCard />
+        </Link>
       </Grid>
     </Flex>
   )
