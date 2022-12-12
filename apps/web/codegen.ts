@@ -1,7 +1,7 @@
 import { CodegenConfig } from '@graphql-codegen/cli'
 
 const config: CodegenConfig = {
-  schema: `${process.env.ADMIN_BASE_URL}/api/graphql`,
+  schema: `${process.env.NEXT_PUBLIC_GRAPHQL_URL}/api/graphql`,
   documents: ['src/gql/*.graphql'],
   generates: {
     './src/gql/generated.ts': {
@@ -16,7 +16,7 @@ const config: CodegenConfig = {
     withHooks: false,
     withHOC: false,
     fetcher: {
-      func: './src/lib/fetcher#fetchData',
+      func: '../lib/fetcher#fetchData',
     },
   },
 }

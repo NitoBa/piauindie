@@ -40,7 +40,7 @@ export function NavBar() {
       w="full"
       zIndex={10}
       as="header"
-      css={{ 'backdrop-filter': 'saturate(180%) blur(5px)' }}
+      css={{ backdropFilter: 'saturate(180%) blur(5px)' }}
     >
       <Flex
         bg={useColorModeValue('whiteAlpha.700', 'gray.800')}

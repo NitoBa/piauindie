@@ -5,17 +5,20 @@ export const fetchData = <TData, TVariables>(
   options?: RequestInit['headers'],
 ): (() => Promise<TData>) => {
   return async () => {
-    const res = await fetch(process.env.ADMIN_BASE_URL ?? '', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        ...(options ?? {}),
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_GRAPHQL_URL}/api/graphql` ?? '',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(options ?? {}),
+        },
+        body: JSON.stringify({
+          query,
+          variables,
+        }),
       },
-      body: JSON.stringify({
-        query,
-        variables,
-      }),
-    })
+    )
 
     const json = await res.json()
 

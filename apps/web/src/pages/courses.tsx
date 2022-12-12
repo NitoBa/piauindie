@@ -1,8 +1,11 @@
 import { Center, Flex, Grid, Heading } from '@chakra-ui/react'
 import CourseCard from '@components/Cards/CourseCard'
 import Link from 'next/link'
+import { useGetAllCoursesQuery } from '../gql/generated'
 
 export default function CoursesPage() {
+  const { data } = useGetAllCoursesQuery()
+
   return (
     <Flex
       direction={'column'}
@@ -24,9 +27,11 @@ export default function CoursesPage() {
         }}
         gap="4"
       >
-        <Link href={`/course/slug-course`} prefetch={false}>
-          <CourseCard />
-        </Link>
+        {data?.courses?.map((course) => (
+          <Link href={`/course/slug-course`} prefetch={false} key={course.id}>
+            <CourseCard />
+          </Link>
+        ))}
       </Grid>
     </Flex>
   )
