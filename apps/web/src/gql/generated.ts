@@ -1,5 +1,5 @@
-import { gql } from '@apollo/client'
-import * as Apollo from '@apollo/client'
+import { useQuery, UseQueryOptions } from '@tanstack/react-query'
+import { fetchData } from './src/lib/fetcher'
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -11,7 +11,6 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>
 }
-const defaultOptions = {} as const
 export type GetAllCoursesQueryVariables = Exact<{ [key: string]: never }>
 
 export type GetAllCoursesQuery = {
@@ -917,7 +916,7 @@ export type UserWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']>
 }
 
-export const GetAllCoursesDocument = gql`
+export const GetAllCoursesDocument = `
     query getAllCourses {
   courses {
     id
@@ -932,57 +931,22 @@ export const GetAllCoursesDocument = gql`
   }
 }
     `
-
-/**
- * __useGetAllCoursesQuery__
- *
- * To run a query within a React component, call `useGetAllCoursesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetAllCoursesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetAllCoursesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetAllCoursesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetAllCoursesQuery,
-    GetAllCoursesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<GetAllCoursesQuery, GetAllCoursesQueryVariables>(
-    GetAllCoursesDocument,
+export const useGetAllCoursesQuery = <
+  TData = GetAllCoursesQuery,
+  TError = unknown,
+>(
+  variables?: GetAllCoursesQueryVariables,
+  options?: UseQueryOptions<GetAllCoursesQuery, TError, TData>,
+) =>
+  useQuery<GetAllCoursesQuery, TError, TData>(
+    variables === undefined ? ['getAllCourses'] : ['getAllCourses', variables],
+    fetchData<GetAllCoursesQuery, GetAllCoursesQueryVariables>(
+      GetAllCoursesDocument,
+      variables,
+    ),
     options,
   )
-}
-export function useGetAllCoursesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetAllCoursesQuery,
-    GetAllCoursesQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<GetAllCoursesQuery, GetAllCoursesQueryVariables>(
-    GetAllCoursesDocument,
-    options,
-  )
-}
-export type GetAllCoursesQueryHookResult = ReturnType<
-  typeof useGetAllCoursesQuery
->
-export type GetAllCoursesLazyQueryHookResult = ReturnType<
-  typeof useGetAllCoursesLazyQuery
->
-export type GetAllCoursesQueryResult = Apollo.QueryResult<
-  GetAllCoursesQuery,
-  GetAllCoursesQueryVariables
->
-export const GetLessonsByCourseSlugDocument = gql`
+export const GetLessonsByCourseSlugDocument = `
     query getLessonsByCourseSlug($slug: String!) {
   lessons(where: {course: {slug: {equals: $slug}}}, orderBy: {createdAt: desc}) {
     id
@@ -999,54 +963,18 @@ export const GetLessonsByCourseSlugDocument = gql`
   }
 }
     `
-
-/**
- * __useGetLessonsByCourseSlugQuery__
- *
- * To run a query within a React component, call `useGetLessonsByCourseSlugQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetLessonsByCourseSlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetLessonsByCourseSlugQuery({
- *   variables: {
- *      slug: // value for 'slug'
- *   },
- * });
- */
-export function useGetLessonsByCourseSlugQuery(
-  baseOptions: Apollo.QueryHookOptions<
-    GetLessonsByCourseSlugQuery,
-    GetLessonsByCourseSlugQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useQuery<
-    GetLessonsByCourseSlugQuery,
-    GetLessonsByCourseSlugQueryVariables
-  >(GetLessonsByCourseSlugDocument, options)
-}
-export function useGetLessonsByCourseSlugLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetLessonsByCourseSlugQuery,
-    GetLessonsByCourseSlugQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions }
-  return Apollo.useLazyQuery<
-    GetLessonsByCourseSlugQuery,
-    GetLessonsByCourseSlugQueryVariables
-  >(GetLessonsByCourseSlugDocument, options)
-}
-export type GetLessonsByCourseSlugQueryHookResult = ReturnType<
-  typeof useGetLessonsByCourseSlugQuery
->
-export type GetLessonsByCourseSlugLazyQueryHookResult = ReturnType<
-  typeof useGetLessonsByCourseSlugLazyQuery
->
-export type GetLessonsByCourseSlugQueryResult = Apollo.QueryResult<
-  GetLessonsByCourseSlugQuery,
-  GetLessonsByCourseSlugQueryVariables
->
+export const useGetLessonsByCourseSlugQuery = <
+  TData = GetLessonsByCourseSlugQuery,
+  TError = unknown,
+>(
+  variables: GetLessonsByCourseSlugQueryVariables,
+  options?: UseQueryOptions<GetLessonsByCourseSlugQuery, TError, TData>,
+) =>
+  useQuery<GetLessonsByCourseSlugQuery, TError, TData>(
+    ['getLessonsByCourseSlug', variables],
+    fetchData<
+      GetLessonsByCourseSlugQuery,
+      GetLessonsByCourseSlugQueryVariables
+    >(GetLessonsByCourseSlugDocument, variables),
+    options,
+  )

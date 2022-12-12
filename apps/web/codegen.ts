@@ -8,15 +8,16 @@ const config: CodegenConfig = {
       plugins: [
         'typescript-operations',
         'typescript',
-        'typescript-react-apollo',
+        'typescript-react-query',
       ],
     },
   },
   config: {
-    reactApolloVersion: 3,
-    withHooks: true,
+    withHooks: false,
     withHOC: false,
-    withComponent: false,
+    fetcher: {
+      func: './src/lib/fetcher#fetchData',
+    },
   },
 }
 
