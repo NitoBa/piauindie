@@ -28,10 +28,10 @@ export default function ContactPage() {
         backgroundImage: CONFETTI_LIGHT,
         backgroundAttachment: 'fixed',
       }}
-      mt="60px"
+      pt="60px"
       bg="brand.50"
       py="4"
-      id="contact"
+      minH="container.md"
     >
       <VStack spacing={{ base: 4, md: 8 }}>
         <Heading

@@ -13,6 +13,8 @@ export default function Login() {
       align={'center'}
       justify={'center'}
       bg={useColorModeValue('brand.100', 'gray.800')}
+      minH="container.md"
+      pt="60px"
     >
       {type === 'signIn' && (
         <Fade in={type === 'signIn'} transition={{ enter: { duration: 0.5 } }}>
