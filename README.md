@@ -78,6 +78,21 @@ npm run docker:up
 With your postgres database configurated and running, start the admin
 application
 
+## 🚀 How to contribute
+
+This project following the guidelines of the gitflow and convensional commit
+
+`git commit -m "feat: add new feature"`
+
+If you don't know about this, don't worry, in the root path of repository run
+the following command
+
+```bash
+npm run commit
+```
+
+and follow the instructions given by the terminal
+
 ## 🧪 Technologies
 
 This project was developed using the following technologies:
