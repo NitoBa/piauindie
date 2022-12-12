@@ -52,7 +52,6 @@ export function NavBar() {
         borderStyle={'solid'}
         borderColor={useColorModeValue('brand.200', 'gray.900')}
         align={'center'}
-        blur="xl"
       >
         <Flex
           flex={{ base: 1, md: 'auto' }}
