@@ -103,6 +103,7 @@ This project was developed using the following technologies:
 - [Prisma](https://www.prisma.io/)
 - [GraphQL](https://graphql.org/)
 - [GraphQLCodegen](https://the-guild.dev/graphql/codegen)
+- [ReactQuery](https://tanstack.com/)
 - [Typescript](https://storybook.js.org/)
 - [Docker](https://www.docker.com/)
 - [Postgres](https://www.postgresql.org/)
