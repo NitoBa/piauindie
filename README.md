@@ -42,6 +42,42 @@ Admin:
 npm run install:admin
 ```
 
+## 🚀 How to run the apps
+
+To run both apps (admin and web) run the following command
+
+```bash
+npm run dev:all
+```
+
+To run individual apps run the following commands
+
+For web application:
+
+```bash
+npm run dev:web
+```
+
+For admin application:
+
+```bash
+npm run dev:admin
+```
+
+> Note: to run admin application you need up a postgres database.
+
+> Create a `.env` file on the root admin application following the
+> `.env.example` file
+
+To execute postgres database locally using docker run the following command
+
+```bash
+npm run docker:up
+```
+
+With your postgres database configurated and running, start the admin
+application
+
 ## 🧪 Technologies
 
 This project was developed using the following technologies:
