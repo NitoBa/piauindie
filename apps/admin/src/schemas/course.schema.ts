@@ -8,7 +8,7 @@ import {
   text,
   timestamp,
 } from '@keystone-6/core/fields'
-import { isAdmin, isStudent, isTeacher } from '../auth/permissions'
+import { isAdmin, isStudent } from '../auth/permissions'
 import { DEFAULT_THUMBNAIL_URL_COURSE } from '../utils/contants'
 import { validationSlugs, validationURLs } from '../utils/regexs'
 
@@ -18,7 +18,7 @@ export const courseSchema = list({
       create: isAdmin,
       delete: isAdmin,
       query: allowAll,
-      update: isTeacher || isAdmin,
+      update: isAdmin,
     },
   },
   fields: {

@@ -20,5 +20,10 @@ export default withAuth(
     db: dbConfig,
     lists: schemas,
     session,
+    server: {
+      cors: {
+        origin: '*',
+      },
+    },
   }),
 )
