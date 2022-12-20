@@ -1,3 +1,7 @@
+import getConfig from 'next/config'
+
+const { publicRuntimeConfig } = getConfig()
+
 /* eslint-disable no-undef */
 export const fetchData = <TData, TVariables>(
   query: string,
@@ -6,7 +10,7 @@ export const fetchData = <TData, TVariables>(
 ): (() => Promise<TData>) => {
   return async () => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_ADMIN_API}/api/graphql` ?? '',
+      `${publicRuntimeConfig.API_URL}/api/graphql` ?? '',
       {
         method: 'POST',
         headers: {
