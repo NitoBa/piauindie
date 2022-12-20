@@ -9,9 +9,6 @@ const nextConfig = {
       'upload.wikimedia.org',
     ],
   },
-  env: {
-    API_URL: process.env.NEXT_PUBLIC_ADMIN_API,
-  },
 }
 
 module.exports = nextConfig
