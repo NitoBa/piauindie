@@ -7,7 +7,9 @@ query getAllCourses {
     thumbnailUrl
     courseEvaluation
     price
-    lessonsCount
-    createdAt
+    teacher {
+      name
+      avatarUrl
+    }
   }
 }

@@ -24,8 +24,11 @@ export type GetAllCoursesQuery = {
     thumbnailUrl?: string | null
     courseEvaluation?: number | null
     price?: number | null
-    lessonsCount?: number | null
-    createdAt?: any | null
+    teacher?: {
+      __typename?: 'User'
+      name?: string | null
+      avatarUrl?: string | null
+    } | null
   }> | null
 }
 
@@ -682,6 +685,20 @@ export type NestedStringFilter = {
   startsWith?: InputMaybe<Scalars['String']>
 }
 
+export type NestedStringNullableFilter = {
+  contains?: InputMaybe<Scalars['String']>
+  endsWith?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  gt?: InputMaybe<Scalars['String']>
+  gte?: InputMaybe<Scalars['String']>
+  in?: InputMaybe<Array<Scalars['String']>>
+  lt?: InputMaybe<Scalars['String']>
+  lte?: InputMaybe<Scalars['String']>
+  not?: InputMaybe<NestedStringNullableFilter>
+  notIn?: InputMaybe<Array<Scalars['String']>>
+  startsWith?: InputMaybe<Scalars['String']>
+}
+
 export enum OrderDirection {
   Asc = 'asc',
   Desc = 'desc',
@@ -790,8 +807,24 @@ export type StringFilter = {
   startsWith?: InputMaybe<Scalars['String']>
 }
 
+export type StringNullableFilter = {
+  contains?: InputMaybe<Scalars['String']>
+  endsWith?: InputMaybe<Scalars['String']>
+  equals?: InputMaybe<Scalars['String']>
+  gt?: InputMaybe<Scalars['String']>
+  gte?: InputMaybe<Scalars['String']>
+  in?: InputMaybe<Array<Scalars['String']>>
+  lt?: InputMaybe<Scalars['String']>
+  lte?: InputMaybe<Scalars['String']>
+  mode?: InputMaybe<QueryMode>
+  not?: InputMaybe<NestedStringNullableFilter>
+  notIn?: InputMaybe<Array<Scalars['String']>>
+  startsWith?: InputMaybe<Scalars['String']>
+}
+
 export type User = {
   __typename?: 'User'
+  avatarUrl?: Maybe<Scalars['String']>
   createdAt?: Maybe<Scalars['DateTime']>
   email?: Maybe<Scalars['String']>
   enrollments?: Maybe<Array<Enrollment>>
@@ -842,6 +875,7 @@ export type UserAuthenticationWithPasswordSuccess = {
 }
 
 export type UserCreateInput = {
+  avatarUrl?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['DateTime']>
   email?: InputMaybe<Scalars['String']>
   enrollments?: InputMaybe<EnrollmentRelateToManyForCreateInput>
@@ -852,6 +886,7 @@ export type UserCreateInput = {
 }
 
 export type UserOrderByInput = {
+  avatarUrl?: InputMaybe<OrderDirection>
   createdAt?: InputMaybe<OrderDirection>
   email?: InputMaybe<OrderDirection>
   id?: InputMaybe<OrderDirection>
@@ -889,6 +924,7 @@ export type UserUpdateArgs = {
 }
 
 export type UserUpdateInput = {
+  avatarUrl?: InputMaybe<Scalars['String']>
   createdAt?: InputMaybe<Scalars['DateTime']>
   email?: InputMaybe<Scalars['String']>
   enrollments?: InputMaybe<EnrollmentRelateToManyForUpdateInput>
@@ -902,6 +938,7 @@ export type UserWhereInput = {
   AND?: InputMaybe<Array<UserWhereInput>>
   NOT?: InputMaybe<Array<UserWhereInput>>
   OR?: InputMaybe<Array<UserWhereInput>>
+  avatarUrl?: InputMaybe<StringNullableFilter>
   createdAt?: InputMaybe<DateTimeNullableFilter>
   email?: InputMaybe<StringFilter>
   enrollments?: InputMaybe<EnrollmentManyRelationFilter>
@@ -926,8 +963,10 @@ export const GetAllCoursesDocument = `
     thumbnailUrl
     courseEvaluation
     price
-    lessonsCount
-    createdAt
+    teacher {
+      name
+      avatarUrl
+    }
   }
 }
     `

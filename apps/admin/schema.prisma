@@ -16,6 +16,7 @@ model User {
   id          String       @id @default(cuid())
   name        String       @default("")
   email       String       @unique @default("")
+  avatarUrl   String?
   role        UserRoleType @default(student)
   password    String
   enrollments Enrollment[] @relation("Enrollment_student")

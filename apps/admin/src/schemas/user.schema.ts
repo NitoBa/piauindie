@@ -8,6 +8,7 @@ import {
   relationship,
 } from '@keystone-6/core/fields'
 import { isAdmin, isStudent } from '../auth/permissions'
+import { validationURLs } from '../utils/regexs'
 
 export const userSchema = list({
   access: {
@@ -23,6 +24,17 @@ export const userSchema = list({
     email: text({
       validation: { isRequired: true },
       isIndexed: 'unique',
+    }),
+    avatarUrl: text({
+      db: { isNullable: true },
+      validation: {
+        isRequired: false,
+
+        match: {
+          regex: validationURLs,
+          explanation: 'Must be a valid URL',
+        },
+      },
     }),
     role: select({
       type: 'enum',

@@ -1,10 +1,18 @@
-import { Center, Flex, Grid, Heading } from '@chakra-ui/react'
+import { Center, Flex, Grid, Heading, Text } from '@chakra-ui/react'
 import CourseCard from '@components/Cards/CourseCard'
 import Link from 'next/link'
 import { useGetAllCoursesQuery } from '../gql/generated'
 
 export default function CoursesPage() {
-  const { data } = useGetAllCoursesQuery()
+  const { data, isLoading } = useGetAllCoursesQuery()
+
+  if (!data && isLoading) {
+    return (
+      <Center>
+        <Text>Loading...</Text>
+      </Center>
+    )
+  }
 
   return (
     <Flex
@@ -29,7 +37,16 @@ export default function CoursesPage() {
       >
         {data?.courses?.map((course) => (
           <Link href={`/course/slug-course`} prefetch={false} key={course.id}>
-            <CourseCard />
+            <CourseCard
+              title={course.title!}
+              thumbnail={course.thumbnailUrl!}
+              tag={''}
+              description={course.description!}
+              teacher={{
+                name: course.teacher?.name!,
+                avatarUrl: course.teacher?.avatarUrl as string | undefined,
+              }}
+            />
           </Link>
         ))}
       </Grid>
