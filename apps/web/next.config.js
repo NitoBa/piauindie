@@ -9,8 +9,7 @@ const nextConfig = {
       'upload.wikimedia.org',
     ],
   },
-  publicRuntimeConfig: {
-    // Will be available on both server and client
+  env: {
     API_URL: process.env.NEXT_PUBLIC_ADMIN_API,
   },
 }
