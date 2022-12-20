@@ -6,7 +6,7 @@ export const fetchData = <TData, TVariables>(
 ): (() => Promise<TData>) => {
   return async () => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_GRAPHQL_URL}/api/graphql` ?? '',
+      `${process.env.NEXT_PUBLIC_ADMIN_API}/api/graphql` ?? '',
       {
         method: 'POST',
         headers: {
