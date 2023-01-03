@@ -8,8 +8,7 @@ export const BaseButton: ComponentStyleConfig = {
   baseStyle: {
     cursor: 'pointer',
     fontWeight: 'semibold',
-    px: '4',
-    py: '3',
+
     gap: '2',
     borderRadius: '8px',
     lineHeight: '20px',
@@ -31,6 +30,12 @@ export const BaseButton: ComponentStyleConfig = {
       py: '2',
       gap: '1',
       fontSize: 'xs',
+    },
+
+    md: {
+      px: '4',
+      py: '3',
+      fontSize: 'sm',
     },
   },
 

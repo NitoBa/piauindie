@@ -1,4 +1,12 @@
-import { Box, Text, Stack, ButtonGroup, IconButton } from '@chakra-ui/react'
+import {
+  Box,
+  Text,
+  Stack,
+  ButtonGroup,
+  IconButton,
+  Divider,
+  Flex,
+} from '@chakra-ui/react'
 import Image from 'next/image'
 import LinkNext from 'next/link'
 import { FaGithub, FaInstagram, FaDiscord, FaYoutube } from 'react-icons/fa'
@@ -7,7 +15,8 @@ export function Footer() {
   return (
     <Box
       as="footer"
-      py={{ base: '12', md: '16' }}
+      pt={{ base: '12', md: '16' }}
+      pb={{ base: '3', md: '4' }}
       px="6"
       borderTop="1px"
       borderColor="brand.200"
@@ -52,9 +61,12 @@ export function Footer() {
             />
           </ButtonGroup>
         </Stack>
-        <Text fontSize="sm" color="GrayText">
-          &copy; {new Date().getFullYear()} Piauindie. All rights reserved.
-        </Text>
+        <Flex pt="6" direction="column" gap="3">
+          <Divider bg={'gray.300'} />
+          <Text fontSize="sm" color="GrayText" align={'center'}>
+            &copy; {new Date().getFullYear()} Piauindie. All rights reserved.
+          </Text>
+        </Flex>
       </Stack>
     </Box>
   )

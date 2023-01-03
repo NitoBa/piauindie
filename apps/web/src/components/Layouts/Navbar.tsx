@@ -110,7 +110,7 @@ export function NavBar() {
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue('gray.600', 'gray.200')
-  const linkHoverColor = useColorModeValue('brand.500', 'white')
+  const linkHoverColor = useColorModeValue('brand.600', 'white')
   const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
@@ -166,7 +166,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('brand.400', 'gray.900') }}
+      _hover={{ bg: useColorModeValue('brand.500', 'gray.900') }}
     >
       <Stack direction={'row'} align={'center'}>
         <Box>
