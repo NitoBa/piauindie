@@ -47,7 +47,7 @@ export function NavBar() {
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
-        px={{ base: 4 }}
+        px={{ base: 4, md: 32 }}
         borderBottom={1}
         borderStyle={'solid'}
         borderColor={useColorModeValue('brand.200', 'gray.900')}
@@ -90,13 +90,13 @@ export function NavBar() {
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
-          spacing={{ base: 3, md: 6 }}
+          spacing={{ md: 3 }}
         >
-          <LinkNext href={'/login?type=signUp'}>
-            <Button variant={'secondary'}>Sign Up</Button>
-          </LinkNext>
           <LinkNext href={'/login?type=signIn'}>
-            <Button>Sign In</Button>
+            <Button variant={'tertiary'}>Sign In</Button>
+          </LinkNext>
+          <LinkNext href={'/login?type=signUp'}>
+            <Button>Create free account</Button>
           </LinkNext>
         </Stack>
       </Flex>
