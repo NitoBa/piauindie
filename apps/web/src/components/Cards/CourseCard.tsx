@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import {
   Box,
   Heading,
@@ -7,6 +6,7 @@ import {
   Avatar,
   HStack,
   Icon,
+  Image,
 } from '@chakra-ui/react'
 import { AVATAR_PLACEHOLDER } from '../../gql/utils/contants'
 import { FaArrowUp } from 'react-icons/fa'
@@ -35,6 +35,7 @@ export default function CourseCard({
     <Box
       maxW={{ md: '384px', base: '100%' }}
       w={'full'}
+      h="500px"
       bg={'white'}
       boxShadow={'xl'}
       rounded={'md'}
@@ -45,18 +46,19 @@ export default function CourseCard({
       transition="all 0.3s"
       _hover={{ opacity: 1 }}
     >
-      <Box
-        h={'240px'}
-        bg={'white'}
+      <Image
+        src={thumbnail}
+        alt={''}
+        objectFit="cover"
+        minH="240px"
+        bg="gray.300"
         mb={4}
         rounded={'sm'}
-        pos={'relative'}
         transition="transform 0.3s"
         overflow="hidden"
         _hover={{ transform: 'scale(1.05)' }}
-      >
-        <Image src={thumbnail} fill alt={''} style={{ objectFit: 'cover' }} />
-      </Box>
+      />
+
       <Stack>
         <Text
           color={'brand.600'}

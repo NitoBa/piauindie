@@ -32,6 +32,27 @@ export type GetAllCoursesQuery = {
   }> | null
 }
 
+export type GetHighlightCoursesQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetHighlightCoursesQuery = {
+  __typename?: 'Query'
+  courses?: Array<{
+    __typename?: 'Course'
+    id: string
+    title?: string | null
+    description?: string | null
+    slug?: string | null
+    thumbnailUrl?: string | null
+    courseEvaluation?: number | null
+    price?: number | null
+    teacher?: {
+      __typename?: 'User'
+      name?: string | null
+      avatarUrl?: string | null
+    } | null
+  }> | null
+}
+
 export type GetLessonsByCourseSlugQueryVariables = Exact<{
   slug: Scalars['String']
 }>
@@ -65,6 +86,11 @@ export type Scalars = {
 
 export type AuthenticatedItem = User
 
+export type BooleanFilter = {
+  equals?: InputMaybe<Scalars['Boolean']>
+  not?: InputMaybe<BooleanFilter>
+}
+
 export type Course = {
   __typename?: 'Course'
   courseEvaluation?: Maybe<Scalars['Int']>
@@ -74,6 +100,7 @@ export type Course = {
   enrolledOn?: Maybe<Array<Enrollment>>
   enrolledOnCount?: Maybe<Scalars['Int']>
   id: Scalars['ID']
+  isHighlighted?: Maybe<Scalars['Boolean']>
   lessons?: Maybe<Array<Lesson>>
   lessonsCount?: Maybe<Scalars['Int']>
   price?: Maybe<Scalars['Float']>
@@ -112,6 +139,7 @@ export type CourseCreateInput = {
   description?: InputMaybe<Scalars['String']>
   durationInMinutes?: InputMaybe<Scalars['Int']>
   enrolledOn?: InputMaybe<EnrollmentRelateToManyForCreateInput>
+  isHighlighted?: InputMaybe<Scalars['Boolean']>
   lessons?: InputMaybe<LessonRelateToManyForCreateInput>
   price?: InputMaybe<Scalars['Float']>
   slug?: InputMaybe<Scalars['String']>
@@ -133,6 +161,7 @@ export type CourseOrderByInput = {
   description?: InputMaybe<OrderDirection>
   durationInMinutes?: InputMaybe<OrderDirection>
   id?: InputMaybe<OrderDirection>
+  isHighlighted?: InputMaybe<OrderDirection>
   price?: InputMaybe<OrderDirection>
   slug?: InputMaybe<OrderDirection>
   thumbnailUrl?: InputMaybe<OrderDirection>
@@ -174,6 +203,7 @@ export type CourseUpdateInput = {
   description?: InputMaybe<Scalars['String']>
   durationInMinutes?: InputMaybe<Scalars['Int']>
   enrolledOn?: InputMaybe<EnrollmentRelateToManyForUpdateInput>
+  isHighlighted?: InputMaybe<Scalars['Boolean']>
   lessons?: InputMaybe<LessonRelateToManyForUpdateInput>
   price?: InputMaybe<Scalars['Float']>
   slug?: InputMaybe<Scalars['String']>
@@ -193,6 +223,7 @@ export type CourseWhereInput = {
   durationInMinutes?: InputMaybe<IntFilter>
   enrolledOn?: InputMaybe<EnrollmentManyRelationFilter>
   id?: InputMaybe<IdFilter>
+  isHighlighted?: InputMaybe<BooleanFilter>
   lessons?: InputMaybe<LessonManyRelationFilter>
   price?: InputMaybe<FloatNullableFilter>
   slug?: InputMaybe<StringFilter>
@@ -981,6 +1012,40 @@ export const useGetAllCoursesQuery = <
     variables === undefined ? ['getAllCourses'] : ['getAllCourses', variables],
     fetchData<GetAllCoursesQuery, GetAllCoursesQueryVariables>(
       GetAllCoursesDocument,
+      variables,
+    ),
+    options,
+  )
+export const GetHighlightCoursesDocument = `
+    query getHighlightCourses {
+  courses(where: {isHighlighted: {equals: true}}) {
+    id
+    title
+    description
+    slug
+    thumbnailUrl
+    courseEvaluation
+    price
+    teacher {
+      name
+      avatarUrl
+    }
+  }
+}
+    `
+export const useGetHighlightCoursesQuery = <
+  TData = GetHighlightCoursesQuery,
+  TError = unknown,
+>(
+  variables?: GetHighlightCoursesQueryVariables,
+  options?: UseQueryOptions<GetHighlightCoursesQuery, TError, TData>,
+) =>
+  useQuery<GetHighlightCoursesQuery, TError, TData>(
+    variables === undefined
+      ? ['getHighlightCourses']
+      : ['getHighlightCourses', variables],
+    fetchData<GetHighlightCoursesQuery, GetHighlightCoursesQueryVariables>(
+      GetHighlightCoursesDocument,
       variables,
     ),
     options,

@@ -14,7 +14,7 @@ import { OAuthButtons } from '@components/OAuthButtons'
 
 export function SignInLayout() {
   return (
-    <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={4}>
+    <Stack spacing={8} mx={'auto'} maxW={'lg'} minW="450px" py={12} px={4}>
       <Stack align={'center'}>
         <Heading fontSize={'4xl'} textAlign="center">
           Sign in to your account

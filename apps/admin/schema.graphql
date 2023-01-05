@@ -232,6 +232,7 @@ type Course {
   description: String
   slug: String
   thumbnailUrl: String
+  isHighlighted: Boolean
   durationInMinutes: Int
   price: Float
   courseEvaluation: Int
@@ -268,6 +269,7 @@ input CourseWhereInput {
   description: StringFilter
   slug: StringFilter
   thumbnailUrl: StringFilter
+  isHighlighted: BooleanFilter
   durationInMinutes: IntFilter
   price: FloatNullableFilter
   courseEvaluation: IntNullableFilter
@@ -276,6 +278,11 @@ input CourseWhereInput {
   teacher: UserWhereInput
   createdAt: DateTimeNullableFilter
   updatedAt: DateTimeNullableFilter
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: BooleanFilter
 }
 
 input IntFilter {
@@ -323,6 +330,7 @@ input CourseOrderByInput {
   description: OrderDirection
   slug: OrderDirection
   thumbnailUrl: OrderDirection
+  isHighlighted: OrderDirection
   durationInMinutes: OrderDirection
   price: OrderDirection
   courseEvaluation: OrderDirection
@@ -335,6 +343,7 @@ input CourseUpdateInput {
   description: String
   slug: String
   thumbnailUrl: String
+  isHighlighted: Boolean
   durationInMinutes: Int
   price: Float
   courseEvaluation: Int
@@ -368,6 +377,7 @@ input CourseCreateInput {
   description: String
   slug: String
   thumbnailUrl: String
+  isHighlighted: Boolean
   durationInMinutes: Int
   price: Float
   courseEvaluation: Int

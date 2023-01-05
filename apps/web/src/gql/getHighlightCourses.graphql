@@ -1,0 +1,15 @@
+query getHighlightCourses {
+  courses(where: { isHighlighted: { equals: true } }) {
+    id
+    title
+    description
+    slug
+    thumbnailUrl
+    courseEvaluation
+    price
+    teacher {
+      name
+      avatarUrl
+    }
+  }
+}

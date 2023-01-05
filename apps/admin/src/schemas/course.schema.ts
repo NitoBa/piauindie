@@ -6,6 +6,7 @@ import {
   relationship,
   select,
   text,
+  checkbox,
   timestamp,
 } from '@keystone-6/core/fields'
 import { isAdmin, isStudent } from '../auth/permissions'
@@ -46,6 +47,8 @@ export const courseSchema = list({
 
       defaultValue: DEFAULT_THUMBNAIL_URL_COURSE,
     }),
+
+    isHighlighted: checkbox({ isFilterable: true, defaultValue: false }),
 
     durationInMinutes: integer({
       validation: { isRequired: true, min: 1 },
