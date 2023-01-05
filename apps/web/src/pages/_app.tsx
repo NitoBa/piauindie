@@ -4,6 +4,7 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { queryClient } from '@lib/react-query'
 import { DefaultLayout } from '@components/Layouts/Default'
+import '@splidejs/react-splide/css'
 
 import { theme } from '../styles/theme'
 

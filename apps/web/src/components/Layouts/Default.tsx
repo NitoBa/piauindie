@@ -9,10 +9,10 @@ type Props = {
 
 export function DefaultLayout({ children }: Props) {
   return (
-    <>
+    <Box bg="gray.50">
       <NavBar />
       <Box>{children}</Box>
       <Footer />
-    </>
+    </Box>
   )
 }

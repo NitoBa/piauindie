@@ -46,7 +46,7 @@ export function Hero() {
       </Flex>
 
       <Flex flex={'1'}>
-        <Image src="./ilustration.png" alt="Illustration" fit="contain" />
+        <Image src="./illustration.png" alt="Illustration" fit="contain" />
       </Flex>
     </Flex>
   )
